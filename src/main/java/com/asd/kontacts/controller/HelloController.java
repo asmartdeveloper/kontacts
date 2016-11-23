@@ -7,13 +7,21 @@ import org.springframework.web.bind.annotation.*;
 public class HelloController {
 
 	@RequestMapping("/hello/{user}")
-	public String sayHello( @PathVariable("user") String user) {
-		if(user == null) { user = "Guest"; }
-		return String.format("Hello %s!", user);
+	public Greeting sayHello( @PathVariable("user") String user) {
+		return new Greeting(user);
 	}
 
-	@RequestMapping("/")
-	public String index() {
-		return "Hello from Spring Boot!";
+	@RequestMapping("/hello")
+	public Greeting index() {
+		return new Greeting();
 	}
+}
+
+class Greeting {
+	private String content;
+	private static final String template = "Hello, %s!";
+	public Greeting() { this("Stranger"); }
+	public Greeting(String user) { this.content = String.format(template, user); }
+	public String getContent() { return content; }
+	
 }
