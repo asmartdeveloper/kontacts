@@ -1,0 +1,17 @@
+branch-defaults:
+  hello-aws:
+    environment: kontacts-dev
+    group_suffix: null
+  master:
+    environment: null
+deploy:
+  artifact: build/libs/kontacts-1.0.jar
+global:
+  application_name: kontacts
+  branch: null
+  default_ec2_keyname: kontacts-eb
+  default_platform: Java 8
+  default_region: us-west-2
+  profile: kontacts-eb
+  repository: null
+  sc: git
